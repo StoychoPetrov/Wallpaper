@@ -1,0 +1,72 @@
+<resources>
+
+    <array name="all_wallpapers">
+        <item>car001</item>
+        <item>car002</item>
+        <item>car003</item>
+        <item>car004</item>
+        <item>car005</item>
+        <item>car006</item>
+        <item>car007</item>
+        <item>car008</item>
+        <item>car009</item>
+        <item>car010</item>
+        <item>car011</item>
+        <item>car012</item>
+        <item>car013</item>
+        <item>car014</item>
+        <item>car015</item>
+        <item>car016</item>
+        <item>car017</item>
+        <item>car018</item>
+        <item>car019</item>
+        <item>car020</item>
+        <item>cutecat001</item>
+        <item>cutecat002</item>
+        <item>cutecat003</item>
+        <item>cutecat004</item>
+        <item>cutecat005</item>
+        <item>cutecat006</item>
+        <item>cutecat007</item>
+        <item>cutecat008</item>
+        <item>cutecat009</item>
+        <item>cutecat010</item>
+        <item>cutecat011</item>
+        <item>cutecat012</item>
+        <item>cutecat013</item>
+        <item>cutecat014</item>
+        <item>cutecat015</item>
+        <item>cutecat016</item>
+        <item>cutecat017</item>
+        <item>cutecat018</item>
+        <item>cutecat019</item>
+        <item>cutecat020</item>
+        <item>luxury001</item>
+        <item>luxury002</item>
+        <item>luxury003</item>
+        <item>luxury004</item>
+        <item>luxury005</item>
+        <item>luxury006</item>
+        <item>luxury007</item>
+        <item>luxury008</item>
+        <item>luxury009</item>
+        <item>luxury010</item>
+        <item>luxury011</item>
+        <item>luxury012</item>
+        <item>luxury013</item>
+        <item>luxury014</item>
+        <item>luxury015</item>
+        <item>luxury016</item>
+        <item>luxury017</item>
+        <item>luxury018</item>
+        <item>luxury019</item>
+        <item>luxury020</item>
+    </array>
+
+    <string name="app_name">Wallpaper</string>
+    <string name="all_wallpaper">All wallpapers</string>
+    <string name="category">Category</string>
+    <string name="rate_us">Rate us</string>
+    <string name="about_us">About us</string>
+    <string name="share">Share</string>
+</resources>
