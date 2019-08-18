@@ -1,17 +1,22 @@
 package com.wallpapers.wallpaper
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var toolbar: Toolbar
     private lateinit var navController: NavController
@@ -29,7 +34,33 @@ class MainActivity : AppCompatActivity() {
         toolbar.setupWithNavController(navController    , appBarConfiguration)
         setupActionBarWithNavController(navController   , appBarConfiguration)
 
-        supportActionBar?.setHomeButtonEnabled(true);
+        supportActionBar?.setHomeButtonEnabled(true)
+
+        navigationView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun onShareClicked(){
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(sendIntent, resources.getText(R.string.send_to)))
+    }
+
+    private fun openPlayStore(){
+        val appPackageName = packageName // getPackageName() from Context or Activity object
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+        } catch (anfe: android.content.ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -37,8 +68,16 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-//    }
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.share -> onShareClicked()
+
+            R.id.rate_us -> openPlayStore()
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START)
+
+        return true
+    }
 }

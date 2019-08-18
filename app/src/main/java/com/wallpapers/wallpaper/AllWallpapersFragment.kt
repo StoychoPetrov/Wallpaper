@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.ads.MobileAds
 import com.wallpapers.wallpaper.databinding.FragmentAllWallpapersBinding
+import com.google.android.gms.ads.AdRequest
+import kotlinx.android.synthetic.main.fragment_all_wallpapers.*
 
 
 class AllWallpapersFragment : Fragment() {
@@ -24,5 +27,16 @@ class AllWallpapersFragment : Fragment() {
         (binding.wallpapersRecyclerView.adapter as WallpapersAdapter).updateData(names.toList())
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        MobileAds.initialize(requireContext()) {
+
+        }
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 }
