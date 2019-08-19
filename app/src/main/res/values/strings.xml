@@ -63,11 +63,22 @@
         <item>luxury020</item>
     </array>
 
+    <array name="categories">
+        <item>Cars</item>
+        <item>Cats</item>
+        <item>Luxury</item>
+    </array>
+
     <string name="app_name">Wallpaper</string>
     <string name="all_wallpaper">All wallpapers</string>
+    <string name="wallpaper">Wallpaper</string>
     <string name="category">Category</string>
     <string name="rate_us">Rate us</string>
     <string name="about_us">About us</string>
     <string name="share">Share</string>
     <string name="send_to">Send to</string>
+    <string name="set_wallpaper">Set wallpaper</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wallpapers.wallpaper.databinding.ItemWallpaperBinding
 
-class WallpapersAdapter : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewHolder>()  {
+class WallpapersAdapter(private val listener: RecyclerViewListener) : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewHolder>()  {
+
+    public interface RecyclerViewListener {
+        fun onItemClicked(wallpaper: WallpaperModel)
+    }
 
     private val wallpapersNames: MutableList<String> = mutableListOf()
 
@@ -16,7 +20,7 @@ class WallpapersAdapter : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewH
 
     override fun getItemCount(): Int = wallpapersNames.size
 
-    override fun onBindViewHolder(holder: WallpapersViewHolder, position: Int) = holder.bindTo(wallpapersNames[position])
+    override fun onBindViewHolder(holder: WallpapersViewHolder, position: Int) = holder.bindTo(wallpapersNames[position], listener)
 
     fun updateData(items: List<String>) {
         val diffCallback    = WallpapersItemDiffCallback(wallpapersNames, items)
@@ -46,8 +50,12 @@ class WallpapersAdapter : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewH
 
         private val binding             = ItemWallpaperBinding.bind(parent)
 
-        fun bindTo(wallpaperName: String) {
+        fun bindTo(wallpaperName: String, listener: RecyclerViewListener) {
             binding.wallpaper         = WallpaperModel(wallpaperName)
+
+            binding.imageView.setOnClickListener {
+                listener.onItemClicked(WallpaperModel(wallpaperName))
+            }
         }
     }
 }

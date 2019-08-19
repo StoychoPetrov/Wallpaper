@@ -4,6 +4,7 @@
           package="com.wallpapers.wallpaper">
 
     <dist:module dist:instant="true"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
 
     <application
             android:allowBackup="true"

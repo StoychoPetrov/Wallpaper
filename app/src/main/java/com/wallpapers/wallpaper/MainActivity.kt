@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -71,6 +72,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
+
+            R.id.category -> {
+                val directions = AllWallpapersFragmentDirections.actionAllWallpapersToCategories()
+                findNavController(R.id.nav_host_fragment).navigate(directions)
+            }
+
             R.id.share -> onShareClicked()
 
             R.id.rate_us -> openPlayStore()

@@ -6,6 +6,38 @@
 
     <fragment android:id        ="@+id/all_wallpapers"
               android:label     ="@string/all_wallpaper"
-              android:name      ="com.wallpapers.wallpaper.AllWallpapersFragment" />
+              android:name      ="com.wallpapers.wallpaper.AllWallpapersFragment" >
+
+        <action android:id                  ="@+id/action_all_wallpapers_to_wallpaper"
+                app:destination             ="@id/wallpaper"
+                app:enterAnim               ="@anim/nav_default_pop_enter_anim"
+                app:exitAnim                ="@anim/nav_default_pop_exit_anim"
+                app:popEnterAnim            ="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim             ="@anim/nav_default_pop_exit_anim"/>
+
+        <action android:id                  ="@+id/action_all_wallpapers_to_categories"
+                app:destination             ="@id/categories"
+                app:enterAnim               ="@anim/nav_default_pop_enter_anim"
+                app:exitAnim                ="@anim/nav_default_pop_exit_anim"
+                app:popEnterAnim            ="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim             ="@anim/nav_default_pop_exit_anim"/>
+
+    </fragment>
+
+    <fragment android:id        ="@+id/wallpaper"
+              android:label     ="@string/wallpaper"
+              android:name      ="com.wallpapers.wallpaper.WallpaperFragment" >
+
+        <argument
+                android:name                ="wallpaper"
+                app:argType                 ="com.wallpapers.wallpaper.WallpaperModel"/>
+
+    </fragment>
+
+    <fragment android:id        ="@+id/categories"
+              android:label     ="@string/category"
+              android:name      ="com.wallpapers.wallpaper.CategoriesFragment" >
+
+    </fragment>
 
 </navigation>
