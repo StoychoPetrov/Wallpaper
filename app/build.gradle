@@ -21,13 +21,11 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField "String", "DB_FILEPATH", AD_MOB_ID_DEBUG
-
+            buildConfigField "String", "AD_INTERSTITIAL_ID", AD_INTERSTITIAL_ID_DEBUG
         }
 
         release {
-            buildConfigField "String", "DB_FILEPATH", AD_MOB_ID_RELEASE
-
+            buildConfigField "String", "AD_INTERSTITIAL_ID", AD_INTERSTITIAL_ID_RELEASE
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

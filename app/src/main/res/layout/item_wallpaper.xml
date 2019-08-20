@@ -9,15 +9,26 @@
                 type="com.wallpapers.wallpaper.WallpaperModel" />
     </data>
 
-    <ImageView
-            android:id                  ="@+id/imageView"
-            android:orientation         ="vertical"
-            android:layout_width        ="match_parent"
-            android:layout_height       ="wrap_content"
-            android:layout_gravity      ="center"
-            android:contentDescription  ="@null"
-            android:scaleType           ="fitXY"
-            android:src                 ="@drawable/car001"
-            app:setImage                ="@{wallpaper}"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id                  ="@+id/imageView"
+                android:orientation         ="vertical"
+                android:layout_width        ="match_parent"
+                android:layout_height       ="0dp"
+                android:layout_gravity      ="center"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:contentDescription  ="@null"
+                android:scaleType           ="centerCrop"
+                android:src                 ="@drawable/car001"
+                app:setImage                ="@{wallpaper}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

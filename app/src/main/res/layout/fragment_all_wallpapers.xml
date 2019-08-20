@@ -10,15 +10,28 @@
            tools:context                   =".AllWallpapersFragment"
            android:background              ="@android:color/white">
 
+      <ImageView
+              android:id                              ="@+id/topImage"
+              android:layout_width                    ="match_parent"
+              android:layout_height                   ="wrap_content"
+              android:scaleType                       ="centerCrop"
+              android:src                             ="@drawable/car005"
+              app:layout_collapseParallaxMultiplier   ="0.5"
+              app:layout_constraintStart_toStartOf    ="parent"
+              app:layout_constraintTop_toTopOf        ="parent"/>
+
       <androidx.recyclerview.widget.RecyclerView
               android:id                           ="@+id/wallpapersRecyclerView"
               android:layout_width                 ="match_parent"
-              android:layout_height                ="match_parent"
+              android:layout_height                ="0dp"
+              android:layout_marginStart           ="3dp"
+              android:layout_marginEnd             ="3dp"
               android:gravity                      ="center"
               app:spanCount                        ="3"
               android:layout_centerHorizontal      ="true"
               app:layoutManager                    ="androidx.recyclerview.widget.GridLayoutManager"
-              app:layout_constraintTop_toTopOf     ="parent"
+              app:layout_constraintTop_toBottomOf  ="@id/topImage"
+              app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf ="parent"/>
 
       <com.google.android.gms.ads.AdView

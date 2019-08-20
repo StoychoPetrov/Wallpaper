@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
@@ -35,15 +36,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toolbar.setupWithNavController(navController    , appBarConfiguration)
         setupActionBarWithNavController(navController   , appBarConfiguration)
 
-        supportActionBar?.setHomeButtonEnabled(true)
-
         navigationView.setNavigationItemSelectedListener(this)
+
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            my_toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
     }
 
     private fun onShareClicked(){
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+            putExtra(Intent.EXTRA_TEXT, "Hey check out my app at: https://play.google.com/store/apps/details?id=$packageName")
             type = "text/plain"
         }
         startActivity(Intent.createChooser(sendIntent, resources.getText(R.string.send_to)))
@@ -69,14 +79,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
 
-            R.id.category -> {
-                val directions = AllWallpapersFragmentDirections.actionAllWallpapersToCategories()
-                findNavController(R.id.nav_host_fragment).navigate(directions)
-            }
+//            R.id.category -> {
+//                val directions = AllWallpapersFragmentDirections.actionAllWallpapersToCategories()
+//                findNavController(R.id.nav_host_fragment).navigate(directions)
+//            }
+
+            R.id.about_us -> startActivity(Intent(this, AboutActivity::class.java))
+
+            R.id.privacy_policy -> startActivity(Intent(this, PrivacyPolicyActivity::class.java))
 
             R.id.share -> onShareClicked()
 
