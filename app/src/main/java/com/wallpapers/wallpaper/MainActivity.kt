@@ -10,11 +10,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toolbar: Toolbar
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    private var interstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +52,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        interstitialAd              = InterstitialAd(this)
+        interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
+
+        loadAd()
+    }
+
+    private fun loadAd(){
+        interstitialAd!!.loadAd(AdRequest.Builder().build())
+
+        interstitialAd!!.adListener = object : AdListener(){
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+
+                interstitialAd!!.show()
+            }
+        }
     }
 
     private fun onShareClicked(){
@@ -104,6 +125,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.rate_us -> openPlayStore()
         }
+
+        loadAd()
 
         drawerLayout.closeDrawer(GravityCompat.START)
 

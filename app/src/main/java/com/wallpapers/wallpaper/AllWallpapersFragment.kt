@@ -21,8 +21,6 @@ class AllWallpapersFragment : Fragment(), WallpapersAdapter.RecyclerViewListener
 
     private lateinit var binding: FragmentAllWallpapersBinding
 
-    private var interstitialAd: InterstitialAd? = null
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding                                         = FragmentAllWallpapersBinding.inflate(inflater, container, false)
@@ -48,24 +46,6 @@ class AllWallpapersFragment : Fragment(), WallpapersAdapter.RecyclerViewListener
 
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
-
-
-        interstitialAd              = InterstitialAd(requireContext())
-        interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
-
-        loadAd()
-    }
-
-    private fun loadAd(){
-        interstitialAd!!.loadAd(AdRequest.Builder().build())
-
-        interstitialAd!!.adListener = object : AdListener(){
-            override fun onAdLoaded() {
-                super.onAdLoaded()
-
-                interstitialAd!!.show()
-            }
-        }
     }
 
     override fun onItemClicked(wallpaper: WallpaperModel) {

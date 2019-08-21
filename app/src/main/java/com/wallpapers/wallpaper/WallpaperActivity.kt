@@ -14,12 +14,15 @@ import kotlinx.android.synthetic.main.fragment_wallpaper.adView
 import kotlinx.android.synthetic.main.fragment_wallpaper.setWallpaperBtn
 import java.io.IOException
 import android.net.Uri
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.InterstitialAd
 
 
 class WallpaperActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWallpaperBinding
 
+    private var interstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +48,28 @@ class WallpaperActivity : AppCompatActivity() {
         shareImg.setOnClickListener{
             shareImage()
         }
+
+        interstitialAd              = InterstitialAd(this)
+        interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
+
+        loadAd()
+    }
+
+    private fun loadAd(){
+        interstitialAd!!.loadAd(AdRequest.Builder().build())
+
+        interstitialAd!!.adListener = object : AdListener(){
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+
+                interstitialAd!!.show()
+            }
+        }
     }
 
     private fun setWallpaperClickListener(){
         setWallpaperBtn.setOnClickListener {
+            loadAd()
             val myWallpaperManager = WallpaperManager.getInstance(this)
             try {
                 val drawableResourceId =
@@ -60,7 +81,6 @@ class WallpaperActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-
         }
     }
 
@@ -75,6 +95,8 @@ class WallpaperActivity : AppCompatActivity() {
             type = "image/jpeg"
 
             startActivity(Intent.createChooser(this, resources.getText(R.string.send_to)))
+
+            loadAd()
         }
     }
 }

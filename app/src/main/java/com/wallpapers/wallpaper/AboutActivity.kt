@@ -8,11 +8,16 @@ import android.R.attr.versionName
 import android.content.pm.PackageInfo
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 
 
 class AboutActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
+
+    private var interstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +33,23 @@ class AboutActivity : AppCompatActivity() {
             versionTxt.text = version
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
+        }
+
+        interstitialAd              = InterstitialAd(this)
+        interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
+
+        loadAd()
+    }
+
+    private fun loadAd(){
+        interstitialAd!!.loadAd(AdRequest.Builder().build())
+
+        interstitialAd!!.adListener = object : AdListener(){
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+
+                interstitialAd!!.show()
+            }
         }
     }
 

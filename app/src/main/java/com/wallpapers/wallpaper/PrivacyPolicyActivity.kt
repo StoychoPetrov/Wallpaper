@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 
 class PrivacyPolicyActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
 
+    private var interstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +21,23 @@ class PrivacyPolicyActivity : AppCompatActivity() {
         toolbar                 = findViewById(R.id.my_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        interstitialAd              = InterstitialAd(this)
+        interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
+
+        loadAd()
+    }
+
+    private fun loadAd(){
+        interstitialAd!!.loadAd(AdRequest.Builder().build())
+
+        interstitialAd!!.adListener = object : AdListener(){
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+
+                interstitialAd!!.show()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
