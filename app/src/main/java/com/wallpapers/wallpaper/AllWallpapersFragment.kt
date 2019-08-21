@@ -41,11 +41,6 @@ class AllWallpapersFragment : Fragment(), WallpapersAdapter.RecyclerViewListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        MobileAds.initialize(requireContext())
-
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
     }
 
     override fun onItemClicked(wallpaper: WallpaperModel) {

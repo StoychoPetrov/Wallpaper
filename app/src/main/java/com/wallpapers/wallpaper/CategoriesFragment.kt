@@ -33,12 +33,12 @@ class CategoriesFragment : Fragment(), LabelAdapter.RecyclerViewListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        MobileAds.initialize(requireContext()) {
+//        MobileAds.initialize(requireContext()) {
+//
+//        }
 
-        }
-
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+//        val adRequest = AdRequest.Builder().build()
+//        adView.loadAd(adRequest)
     }
     override fun onItemClicked(position: Int) {
 
