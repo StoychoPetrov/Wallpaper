@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
+import kotlinx.android.synthetic.main.activity_about.adView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class AboutActivity : AppCompatActivity() {
@@ -34,6 +36,9 @@ class AboutActivity : AppCompatActivity() {
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
         interstitialAd              = InterstitialAd(this)
         interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID

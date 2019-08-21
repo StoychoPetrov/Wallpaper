@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
+import kotlinx.android.synthetic.main.activity_about.*
 
 class PrivacyPolicyActivity : AppCompatActivity() {
 
@@ -24,6 +25,9 @@ class PrivacyPolicyActivity : AppCompatActivity() {
 
         interstitialAd              = InterstitialAd(this)
         interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
         loadAd()
     }
