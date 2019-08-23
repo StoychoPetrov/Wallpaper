@@ -1,4 +1,4 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat

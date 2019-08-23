@@ -1,11 +1,11 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.wallpapers.wallpaper.databinding.ItemWallpaperBinding
+import com.wallpapers.sdswall1.databinding.ItemWallpaperBinding
 
 class WallpapersAdapter(private val listener: RecyclerViewListener) : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewHolder>()  {
 

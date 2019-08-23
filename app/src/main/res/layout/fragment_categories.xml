@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.wallpapers.wallpaper.CategoriesViewModel" />
+                type="com.wallpapers.sdswall1.CategoriesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

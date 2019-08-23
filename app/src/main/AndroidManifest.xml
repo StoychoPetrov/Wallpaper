@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.wallpapers.wallpaper">
+          package="com.wallpapers.sdswall1">
 
     <dist:module dist:instant="true"/>
 
@@ -18,17 +18,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity">
+        <activity android:name="com.wallpapers.sdswall1.AboutActivity">
         </activity>
-        <activity android:name=".PrivacyPolicyActivity">
+        <activity android:name="com.wallpapers.sdswall1.PrivacyPolicyActivity">
         </activity>
-        <activity android:name=".WallpaperActivity">
+        <activity android:name="com.wallpapers.sdswall1.WallpaperActivity">
         </activity> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="ca-app-pub-1205229788701742~5571394914"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.wallpapers.sdswall1.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,4 +1,4 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import android.app.WallpaperManager
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import com.wallpapers.wallpaper.databinding.ActivityWallpaperBinding
+import com.wallpapers.sdswall1.databinding.ActivityWallpaperBinding
 import kotlinx.android.synthetic.main.activity_wallpaper.*
 import kotlinx.android.synthetic.main.fragment_wallpaper.adView
 import kotlinx.android.synthetic.main.fragment_wallpaper.setWallpaperBtn

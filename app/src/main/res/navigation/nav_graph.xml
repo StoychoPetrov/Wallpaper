@@ -6,7 +6,7 @@
 
     <fragment android:id        ="@+id/all_wallpapers"
               android:label     ="@string/all_wallpaper"
-              android:name      ="com.wallpapers.wallpaper.AllWallpapersFragment" >
+              android:name      ="com.wallpapers.sdswall1.AllWallpapersFragment" >
 
         <action android:id                  ="@+id/action_all_wallpapers_to_wallpaper"
                 app:destination             ="@id/wallpaper"
@@ -26,17 +26,17 @@
 
     <fragment android:id        ="@+id/wallpaper"
               android:label     ="@string/wallpaper"
-              android:name      ="com.wallpapers.wallpaper.WallpaperFragment" >
+              android:name      ="com.wallpapers.sdswall1.WallpaperFragment" >
 
         <argument
                 android:name                ="wallpaper"
-                app:argType                 ="com.wallpapers.wallpaper.WallpaperModel"/>
+                app:argType                 ="com.wallpapers.sdswall1.WallpaperModel"/>
 
     </fragment>
 
     <fragment android:id        ="@+id/categories"
               android:label     ="@string/category"
-              android:name      ="com.wallpapers.wallpaper.CategoriesFragment" >
+              android:name      ="com.wallpapers.sdswall1.CategoriesFragment" >
 
     </fragment>
 

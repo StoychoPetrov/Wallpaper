@@ -1,18 +1,15 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_about.*
 import android.content.pm.PackageManager
-import android.R.attr.versionName
-import android.content.pm.PackageInfo
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_about.adView
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class AboutActivity : AppCompatActivity() {

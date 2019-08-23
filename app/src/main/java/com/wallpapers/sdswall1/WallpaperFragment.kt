@@ -1,4 +1,4 @@
-package com.wallpapers.wallpaper
+package com.wallpapers.sdswall1
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.wallpapers.wallpaper.databinding.FragmentWallpaperBinding
+import com.wallpapers.sdswall1.databinding.FragmentWallpaperBinding
 import kotlinx.android.synthetic.main.fragment_wallpaper.*
 import android.app.WallpaperManager
 import android.widget.Toast
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.fragment_all_wallpapers.*
 import kotlinx.android.synthetic.main.fragment_wallpaper.adView
 import java.io.IOException
 
