@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.string.navigation_drawer_close
         )
 
-        MobileAds.initialize(this)
+        MobileAds.initialize(this, "ca-app-pub-1205229788701742~5571394914")
 
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
