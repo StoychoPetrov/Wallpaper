@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class WallpaperModel(
-    val name: String
+    var name: String?        = null
 ) : Parcelable

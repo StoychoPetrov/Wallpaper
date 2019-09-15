@@ -10,7 +10,7 @@ import com.wallpapers.sdswall1.databinding.ItemWallpaperBinding
 class WallpapersAdapter(private val listener: RecyclerViewListener) : RecyclerView.Adapter<WallpapersAdapter.WallpapersViewHolder>()  {
 
     public interface RecyclerViewListener {
-        fun onItemClicked(wallpaper: WallpaperModel)
+        fun onItemClicked(position: Int, wallpaper: WallpaperModel)
     }
 
     private val wallpapersNames: MutableList<String> = mutableListOf()
@@ -54,7 +54,7 @@ class WallpapersAdapter(private val listener: RecyclerViewListener) : RecyclerVi
             binding.wallpaper         = WallpaperModel(wallpaperName)
 
             binding.imageView.setOnClickListener {
-                listener.onItemClicked(WallpaperModel(wallpaperName))
+                listener.onItemClicked(adapterPosition, WallpaperModel(wallpaperName))
             }
         }
     }

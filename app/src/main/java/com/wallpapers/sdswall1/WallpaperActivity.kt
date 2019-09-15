@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.fragment_wallpaper.adView
 import kotlinx.android.synthetic.main.fragment_wallpaper.setWallpaperBtn
 import java.io.IOException
 import android.net.Uri
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.InterstitialAd
 
@@ -24,6 +28,8 @@ class WallpaperActivity : AppCompatActivity() {
 
     private var interstitialAd: InterstitialAd? = null
 
+    private lateinit var imagesNames: Array<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wallpaper)
@@ -33,6 +39,8 @@ class WallpaperActivity : AppCompatActivity() {
         binding.wallpaperModel          = intent.getParcelableExtra("wallpaper")
 
         setWallpaperClickListener()
+
+        imagesNames = resources.getStringArray(R.array.all_wallpapers)
 
         MobileAds.initialize(this) {
 
@@ -53,6 +61,11 @@ class WallpaperActivity : AppCompatActivity() {
         interstitialAd!!.adUnitId   = BuildConfig.AD_INTERSTITIAL_ID
 
         loadAd()
+
+        val adapter = ScreenSlidePagerAdapter(supportFragmentManager)
+        viewPager.adapter   = adapter
+
+        viewPager.currentItem = intent.getIntExtra("position", 0)
     }
 
     private fun loadAd(){
@@ -97,6 +110,25 @@ class WallpaperActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(this, resources.getText(R.string.send_to)))
 
             loadAd()
+        }
+    }
+
+    /**
+     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * sequence.
+     */
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+        override fun getCount(): Int = imagesNames.size
+
+        override fun getItem(position: Int): Fragment {
+
+            val fragment = WallpaperPagerFragment()
+            val bundle   = Bundle()
+
+            bundle.putString("image_name", imagesNames[position])
+            fragment.arguments  = bundle
+
+            return fragment
         }
     }
 }

@@ -35,10 +35,11 @@ class AllWallpapersFragment : Fragment(), WallpapersAdapter.RecyclerViewListener
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onItemClicked(wallpaper: WallpaperModel) {
+    override fun onItemClicked(position: Int, wallpaper: WallpaperModel) {
 
         val intent = Intent(requireActivity(), WallpaperActivity::class.java)
         intent.putExtra("wallpaper", wallpaper)
+        intent.putExtra("position", position)
         startActivity(intent)
     }
 }
